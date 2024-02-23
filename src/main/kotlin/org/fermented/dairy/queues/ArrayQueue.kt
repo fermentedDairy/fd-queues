@@ -22,8 +22,8 @@ class ArrayQueue<T>(initialCapacity: Int) : Queue<T>  {
                 allocateNewArray() //O(n)
             }
         }
-        lastIndex++
         queueArray[lastIndex] = offered
+        lastIndex++
         return true
     }
 
@@ -33,11 +33,18 @@ class ArrayQueue<T>(initialCapacity: Int) : Queue<T>  {
         for (index in queueArray.indices) {
             newArray[index] = queueArray[index]
         }
+        queueArray = newArray
     }
 
     private fun shiftToStartOfArray() {
         for (index in nextIndex .. lastIndex)
+            queueArray[index - nextIndex] = queueArray[index]
 
+        for (index in lastIndex - nextIndex + 1..<queueArray.size)
+            queueArray[index] = null
+
+        lastIndex -= nextIndex
+        nextIndex = 0
     }
 
     override fun poll(): T? {
