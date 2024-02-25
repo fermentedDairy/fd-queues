@@ -3,7 +3,6 @@ package org.fermented.dairy.queues
 import org.junit.jupiter.api.Test
 import kotlin.random.Random
 import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
 
 class ArrayQueueTest{
 
@@ -51,13 +50,13 @@ class ArrayQueueTest{
         }
         var cycleCount:Int = 0;
         while (cycleCount < 20) {
-            val messageCount:Int = Random.nextInt(0, 5)
+            val messageCount:Int = Random.nextInt(0, 20)
             for (i in 1..messageCount) {
                 arrayQueue.offer(i)
                 assertEquals(i.toLong(), arrayQueue.depth(), "Depth not incremented")
             }
-            while(arrayQueue.depth() > 0) {
-                assertNotNull(arrayQueue.poll())
+            for (i in 1..messageCount) {
+                assertEquals(i, arrayQueue.poll())
             }
             cycleCount++;
         }

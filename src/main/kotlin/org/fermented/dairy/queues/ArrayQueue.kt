@@ -44,6 +44,9 @@ class ArrayQueue<T>(initialCapacity: Int) : Queue<T>  {
             queueArray[index] = null
 
         lastIndex -= nextIndex
+        for(index in lastIndex + 1 ..< queueArray.size)
+            queueArray[index] = null //prevent consumed entries from staying in memory in an 'orphaned' slot
+
         nextIndex = 0
     }
 
