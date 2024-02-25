@@ -1,3 +1,3 @@
 # fd-queues
 
-Exercise writing queues (multiple backing structures) in Kotlin
+Exercise writing queues (multiple backing structures) in Kotlin.
