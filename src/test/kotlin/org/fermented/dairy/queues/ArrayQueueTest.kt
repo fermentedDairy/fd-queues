@@ -48,7 +48,7 @@ class ArrayQueueTest{
 
             assertEquals(i, arrayQueue.poll())
         }
-        var cycleCount:Int = 0;
+        var cycleCount = 0
         while (cycleCount < 20) {
             val messageCount:Int = Random.nextInt(0, 20)
             for (i in 1..messageCount) {
@@ -58,7 +58,7 @@ class ArrayQueueTest{
             for (i in 1..messageCount) {
                 assertEquals(i, arrayQueue.poll())
             }
-            cycleCount++;
+            cycleCount++
         }
     }
 }
